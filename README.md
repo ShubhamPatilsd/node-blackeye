@@ -10,3 +10,8 @@ Usage of this tool for attacking targets without prior mutual consent is illegal
 Run `npm install` to install all the packages necessary. Then run `npm start [SITE_NAME]` where `[SITE_NAME]` is the site you want to server. For example, a Google login page would be called `google` so you would do `npm start google`. Your NodeJS + Express server will be running at this point. 
 
 Optional (Ngrok): If you want to use `ngrok`, go through the `ngrok` account creation and run the command `./ngrok http [PORT]` in the root of the project, where `[PORT]` is the port number your NodeJS server is running (by default this is port 5000). If you want to tweak the port, either edit the source code or set and environment variable called `PORT` to the port number that you wish and restart the server.
+
+## Todo
+
+- [ ] Create a bash script to automate the starting of the server and loading the pages
+- [ ] Phishing pages
